@@ -1,17 +1,18 @@
-import { useState } from 'react'
 import './App.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Homepage from './components/Homepage';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const queryClient = new QueryClient();
+
+  
 
   return (
-    <div className="h-full w-full flex-col items-center justify-center">
-      <div className="flex-col flex items-center justify-center">
-        <h1>Hello World</h1>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
-        <p>Count: {count}</p>
-      </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Homepage />
+    </QueryClientProvider>
+    
   )
 }
 
